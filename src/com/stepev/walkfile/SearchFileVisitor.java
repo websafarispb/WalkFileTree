@@ -32,6 +32,14 @@ public class SearchFileVisitor extends SimpleFileVisitor<Path> {
             numbersOfFiles++;
         return super.visitFile(file, attrs);
     }
+    @Override
+    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+
+        if(Files.isDirectory(dir)){
+            numberOfFolders++;
+        }
+        return super.preVisitDirectory(dir, attrs);
+    }
 
     public int getNumbersOfFiles() {
         return numbersOfFiles;
